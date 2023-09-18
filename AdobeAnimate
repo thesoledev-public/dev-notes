@@ -1,0 +1,32 @@
+Adobe Animate - published HTML and JS scaling to fit parent container.
+
+You must edit the script in the html file that Animate publish whatever name you have.
+
+//create an div with an id that wraps all animate's divs - animation container, in my case a div#parentContainer
+
+1.-  Inside the resizeCanvas function: (at the beginning )
+
+function resizeCanvas() {
+
+//get the parent element
+
+var parent = document.getElementById("parentContainer");
+
+//you can set the width of the parent container with css, but you must add this line in order to maintain the ratio in proportion with parent width of animate Stage:
+
+//in my case my stage's size is 550x400 , add your size in the formula
+
+parent.style.height= (parent.clientWidth * (400 / 550)+"px");
+
+2.- in this line switch with your parent's size:
+
+// var iw = window.innerWidth, ih=window.innerHeight; this is what we don't want
+
+put this line instead, the parent size.
+
+var iw = parent.clientWidth, ih= parent.clientHeight;  
+
+
+3.- Finally in the call of makeResponsive function, at the bottom of the script use this parameters:
+
+makeResponsive(true,"both",true,1);
